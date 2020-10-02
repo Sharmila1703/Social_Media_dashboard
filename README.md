@@ -1,2 +1,1 @@
-# Social_Media_dashboard
-social media dashboard
+# SOCIAL_MEDIA_DASHBOARD_WITH_THEME_SWITCHER

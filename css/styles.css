@@ -1,0 +1,423 @@
+/* =============================================================================
+  #RESET
+============================================================================= */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0;margin:0 0 1em}
+
+
+/* =============================================================================
+  #TOOLS
+============================================================================= */
+html { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+*, *:before, *:after { -webkit-box-sizing: inherit; -moz-box-sizing: inherit; box-sizing: inherit; }
+
+
+/* =============================================================================
+  #GENERAL
+============================================================================= */
+* {
+    font-family: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+html {
+    min-height: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', Helvetica, Arial, Verdana, sans-serif;
+    color: var(--primary-color);
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-color: var(--bg);
+    
+    transition: var(--transition-bg);
+}
+
+
+/* =============================================================================
+  #VARIABLES
+============================================================================= */
+:root {
+    --primary-color: #292c35;
+    --secondary-color: #63687e;
+    --contrast-color: #63687e;
+    --bg-card: #f0f3fa;
+    --bg-cardHover: #e1e3f0;
+    --bg: #ffffff;
+    --bg-header: #f8f9fe;
+    --bg-toggle: #aeb2cd;
+    --bg-toggleHover: linear-gradient(0.25turn, #3399d7, #44d091);
+    --bg-toggleSwitch: #f0f3fa;
+    --color-hr: #292c35;
+
+    --transition-bg: background 150ms ease-in-out;
+}
+
+[data-theme="dark"] {
+    --primary-color: #ffffff;
+    --secondary-color: #8b97c6;
+    --contrast-color: #ffffff;
+    --bg-card: #252b43;
+    --bg-cardHover: #333a56;
+    --bg: #1e202a;
+    --bg-header: #20222f;
+    --bg-toggle: linear-gradient(0.25turn, #3399d7, #44d091);
+    --bg-toggleHover: linear-gradient(0.25turn, #3399d7, #44d091);
+    --bg-toggleSwitch: #252b43;
+    --color-hr: #37394e;
+}
+
+
+/* =============================================================================
+  #CONTAINERS
+============================================================================= */
+.container {
+    margin: 0 auto;
+    max-width: 1160px;
+    padding: 0 25px;
+    width: 100%;
+}
+
+
+/* =============================================================================
+  #IMAGES
+============================================================================= */
+img {
+  max-width: 100%;
+  font-style: italic;
+  font-size: 0.8em;
+  vertical-align: middle;
+}
+
+img[width],
+img[height] {
+  max-width: none;
+}
+
+
+/* =============================================================================
+  #TYPOGRAPHY
+============================================================================= */
+.ta-left {
+    text-align: left;
+}
+
+.ta-center {
+    text-align: center;
+}
+
+.ta-right {
+    text-align: right;
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+h2 {
+    margin-bottom: 10px;
+
+    color: var(--contrast-color);
+}
+
+/* =============================================================================
+  #HEADER
+============================================================================= */
+.header::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 260px;
+
+    background-color: var(--bg-header);
+    border-radius: 0 0 30px 30px;
+    
+    transition: var(--transition-bg);
+}
+
+
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+}
+
+@media (max-width: 630px) {
+    .header__heading {
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--color-hr);
+    }
+
+        .header__heading h1 {
+            font-size: 1.4em;
+        }
+
+    .header__options {
+        padding-top: 20px;
+    }
+}
+
+@media (min-width: 631px) {
+    .header {
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+}
+
+
+.header__heading p {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+
+/* =============================================================================
+  #CARD
+============================================================================= */
+/* ##CARD FLEX CONTAINER ==================================================== */
+.flex-cards {
+    display: flex;
+    margin-bottom: 40px;
+    flex-direction: column;
+}
+
+@media (max-width: 475px) {
+    .flex-cards .card + .card {
+        margin-top: 25px;
+    }
+}
+
+@media (min-width: 476px) {
+    .flex-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+        .flex-cards .card {
+            margin: 15px;
+            flex: 0 0 calc(50% - 30px);
+        }
+}
+
+@media (min-width: 960px) {
+    .flex-cards .card {
+        flex: 0 0 calc(25% - 30px);
+    }
+}
+
+
+/* ##BASIC CARD STYLES ====================================================== */
+.card {
+    overflow: hidden;
+    position: relative;
+    padding: 26px 30px;
+
+    font-size: 1em;
+    text-decoration: none;
+
+    background-color: var(--bg-card);
+    border-radius: 4px;
+
+    transition: var(--transition-bg);
+}
+
+/* Hover on a card that's a link */
+a.card:hover {
+    background-color: var(--bg-cardHover);
+}
+
+
+/* ##CARD PLATFORM THEMES =================================================== */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 4px;
+}
+
+.card--facebook::before {
+    background-color: #168ffa;
+}
+
+.card--twitter::before {
+    background-color: #1da2ed;
+}
+
+.card--instagram::before {
+    background-color: #ea887d;
+    background: linear-gradient(0.25turn, #fdc468, #df4996);
+}
+
+.card--youtube::before {
+    background-color: #c4042d;
+}
+
+
+/* ###CARD HANDLE ========================================================= */
+.card__handle {
+    margin-bottom: 20px;
+
+    color: var(--secondary-color);
+    font-size: 0.8em;
+    font-weight: 700;
+    text-align: center;
+}
+
+    .card__handle img {
+        margin-right: 5px;
+    }
+
+
+/* ###CARD HANDLE ========================================================= */
+.card__subs {
+    text-align: center;
+    line-height: 1.1;
+}
+
+    .card__subs__number {
+        font-size: 3.5em;
+        font-weight: 700;
+    }
+
+    .card__subs__label {
+        color: var(--secondary-color);
+        font-size: 0.8em;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+
+
+/* ###CARD CHANGE LABEL =================================================== */
+.card__change {
+    display: inline-block;
+    margin-bottom: 0;
+    padding-left: 12px;
+
+    font-size: 0.8em;
+    font-weight: 700;
+    line-height: 1;
+
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+
+.card--general .card__change {
+    margin-top: 20px;
+}
+
+/* Card change variations */
+.card__change--up {
+    color: #1db489;
+
+    background-image: url('../img/icon-up.svg');
+}
+
+.card__change--down {
+    color: #dc414c;
+
+    background-image: url('../img/icon-down.svg');
+}
+
+
+/* ###CARD HEADING ========================================================= */
+.card__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .card__heading__label {
+        color: var(--secondary-color);
+        font-weight: 700;
+    }
+
+
+/* ###CARD HEADING ========================================================= */
+.card__stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+    .card__stats__number {
+        font-size: 2em;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+
+/* =============================================================================
+  #TOGGLE
+============================================================================= */
+.toggle__label {
+    display: flex;
+    margin-right: 15px;
+
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+@media (max-width: 630px) {
+    .toggle__label {
+        justify-content: space-between;
+    }
+}
+
+.toggle__input {
+    opacity: 0;
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
+.toggle__switch {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+    height: 24px;
+    width: 48px;
+    
+    cursor: pointer;
+
+    background: var(--bg-toggle);
+    border-radius: 12px;
+}
+
+.toggle__switch:hover {
+    background: var(--bg-toggleHover);
+}
+
+.toggle__switch::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: 18px;
+    width: 18px;
+    
+    background-color: var(--bg-toggleSwitch);
+    border-radius: 50%;
+
+    transition: transform 150ms ease-in-out;
+}
+
+[data-theme="dark"] .toggle__switch::before {
+    transform: translateX(calc(100% + 6px));
+}
